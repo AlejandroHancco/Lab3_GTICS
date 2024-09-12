@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de la Receta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Información de la Receta <span th:text="${receta.nombre}"> </span> </h1>
+    <form method="post" th:action="@{'/receta/save'}">
+        <input th:value="${receta.id}" id="id" name="id" type="hidden">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input th:value="${receta.nombre}" id="nombre" name="nombre" type="text" class="form-control" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="instrucciones" class="form-label">Instrucciones</label>
+            <input th:value="${receta.instrucciones}" id="instrucciones" name="instrucciones" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label for="dificultad" class="form-label">Dificultad</label>
+            <input th:value="${receta.dificultad}" id="dificultad" name="dificultad" type="text" class="form-control" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="tiempo" class="form-label">Tiempo de preparación</label>
+            <input th:value="${receta.tiempoPreparacion}" id="tiempo" name="tiempo" type="text" class="form-control" disabled>
+        </div>
+
+        <a th:href="@{'/receta/list'}" class="btn btn-primary">Regresar</a>
+        <a th:href="@{'/employee/edit/' + ${receta.id}}" class="btn btn-primary">Editar receta</a>
+        <a th:href="@{'/employee/ingredientes/' + ${receta.id}}" class="btn btn-primary">Añadir ingredientes</a>
+        <a th:href="@{'/employee/nutricion/' + ${receta.id}}" class="btn btn-primary">Editar datos de nutrición</a>
+        <!--<button type="submit" class="btn btn-success">Guardar</button>-->
+    </form>
+</div>
+
+<!-- Bootstrap JS (opcional, solo si necesitas componentes de Bootstrap que requieren JavaScript) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
